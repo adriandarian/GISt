@@ -1,4 +1,5 @@
 ![alt text](GISt.png "GISt")
-#getting the GISt of our food
-
+<center><h1>
+# getting the GISt of our food
+</center></h1>
 
