@@ -1,5 +1,4 @@
-# GISt
-### Getting the GISt of our food
-
 ![alt text](GISt.png "GISt")
+<center>#getting the GISt of our food</center>
+
 
