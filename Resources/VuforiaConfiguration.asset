@@ -8,12 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -2067402452, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
+  m_Script: {fileID: -2067402452, guid: 1e108ae5f2133934f948edded555f03e, type: 3}
   m_Name: VuforiaConfiguration
   m_EditorClassIdentifier: 
   vuforia:
-    vuforiaLicenseKey: 
-    ufoLicenseKey: QWJhUjNKdi8vLy8vQUFBQUtFZU0xK3M3SDA1bHR2MDBJcGZmcDF4cmo3MG9IMG5iUTNheWpHZisyYkxsRHcvRnp2VG1tUVM1MytuOVlZS1RUc2dXeHhhYUVDOWJ6MmYwOHVnOHkzUlMrYVQ5OFAyakN2dUZ4dlJFZEpKSXd6MlY3N0M0Y0JWbTUzVVppMFdOQVBXLy92OXVMbjBMb3d4ODBxcXNxMGlqL2JGb3FmQ2Q1Vnd6VCtQTm9SbmVmSzQxSDRBZE9jRVkyckZCMXVPbTJ2UzVkSWtmK3doMFZZdFBpMWRGNU1TSytxNHIyMFFXWExONkNXTHpyNHlZeXA2dDNBL2hORjZEaUlmbGVHQm90MFlwajYvT2dkREJnVUljUW9aQ0FVMCtoZUp0TTh0SGhHRmNhcU52bnRyenF5dFNlbjVWK2tkUVQxSVF0czdYU0MycW5LTFV6NnhMSzNLNFJQK01oUEVvRVJaM2I0V2ZVMWdyV0k4VU8rQTU=
+    vuforiaLicenseKey: AYGavIz/////AAAAmcsoJRIuv0tzhe2djtA26HyAE3spnjpvtc7syrYkfWTF4Y8E5Lsf5mXZ7zbObidvzMrH+7Jya7esO3yo2RE5LjI6EMldnTJ/IeE0h8LkU9FkMF03pkzH8jgyyM3zVxJki7IX3PS80930ZwHjPmK1Nap7SsCS3S/X0zFCrf9i5rdPgsE4o3zL/SH5aEndrqeJTvZXVgu/X6Oe3SwRArV2iv0Pi5Igm96AQXnR0g8Np6XkDQzwIS1ddLBb3M0fMp1jqgazxEB5XH+TKJHxt0Sl9x+uSap99xZpFOzLXE236R9xzYlZF/DiyyXw++H40Ev2zLYy0CY09mqYaJ6g9J64toWzYmi3PiS5wcJ7FiIQJpfU
+    ufoLicenseKey: QVJoY2dFai8vLy8vQUFBQUtFKy9hRFhmb1VmVHZQVWE3NTh0ZXVoRW9iTTRFNEhoVEZESHlTVHZzNUdEV1hKamlEZmVMcUtSeFh1bkVPK0VNZWZLdlNJeDMzQ1ZXYlBLanl4SFcrTVp6ZTJHemkwT2l0dStpNVlBM3k2Nm1iS1Y2ZVloMWo4dTkvcmR0NytlaTd5UkdsNUlkM1p5bnhZVDMyZ2c3cEFWZWwyMkZnTUJVUzc4UlZyanM0WFczdU03cEF4TGNCcnpsL2treWt1NTVYTmpCVVRSQVIzVDdRdHlMdE52UDcxWHYzL1pTcXUvV2R0bXlmRkFUOGdMYi9LaXNIWFloZUhRK1RUSDZwMGdWTU4vMGVSRVRMREEwMmU1RXNFSTRIUGhQOTV4QUpvM3ZPaDFIOHRLTFhCdXpFbVZOWmVMT3I2L3d6b3l3MDhMcWFobm9zYkNWaGREYnB1M2hNN2h2YVBvOWlmWXIzRlJRaWFnU2NxeGdNcm8=
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
     maxSimultaneousImageTargets: 1
@@ -43,8 +43,18 @@ MonoBehaviour:
       FieldOfView: {x: 0, y: 0, z: 0, w: 0}
       ContainsMagnet: 0
   databaseLoad:
-    dataSetsToLoad: []
-    dataSetsToActivate: []
+    dataSetsToLoad:
+    - VuforiaMars_Images
+    - VuforiaMars_VuMark
+    - VuforiaMars_Object_OT
+    - VuforiaMars_ModelTarget
+    - GISt
+    dataSetsToActivate:
+    - VuforiaMars_Images
+    - VuforiaMars_VuMark
+    - VuforiaMars_Object_OT
+    - VuforiaMars_ModelTarget
+    - GISt
   videoBackground:
     clippingMode: 0
     numDivisions: 2
@@ -64,7 +74,7 @@ MonoBehaviour:
     autoInitTracker: 0
     autoStartTracker: 0
   webcam:
-    deviceNameSetInEditor: 
+    deviceNameSetInEditor: Microsoft Camera Rear
     flipHorizontally: 0
     turnOffWebCam: 0
     renderTextureLayer: 30
