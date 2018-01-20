@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Animation_AR : MonoBehaviour {
-    bool sphere_clicked = false;
-
+    
     float sphere_speed = .5f;
+    Vector2 old_pos;
+
+    public string sphere_clicked = "";
 
     // Use this for initialization
     void Start() {
@@ -15,9 +17,19 @@ public class Animation_AR : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (!sphere_clicked)
+        sphere_speed *= .95f;
+
+        if (sphere_clicked != "")
         {
-            this.transform.Rotate(new Vector3(0, sphere_speed, 0));
+
+            GameObject.Find(sphere_clicked).gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            GameObject.Find(sphere_clicked).gameObject.transform.localScale = new Vector3(GameObject.Find(sphere_clicked).gameObject.transform.localScale.x + .25f, GameObject.Find(sphere_clicked).gameObject.transform.localScale.y + .25f, GameObject.Find(sphere_clicked).gameObject.transform.localScale.y + .25f);
+
+        }
+
+        if (sphere_clicked == "")
+        {
+            this.transform.Rotate(new Vector3(0, sphere_speed + .5f, 0));
             this.transform.position = new Vector3(0, Mathf.Sin(Time.time * 2f) / 8f, 0);
         }
 
@@ -27,26 +39,34 @@ public class Animation_AR : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                sphere_clicked = true;
+
                 // the object identified by hit.transform was clicked
                 // do whatever you want
-                hit.collider.gameObject.transform.localScale = new Vector3(1.25f, 1.25f, 1.25f);
-
+                sphere_clicked = hit.collider.gameObject.name;
+                GameObject.Find("Canvas").GetComponent<UI_Base>().screen = sphere_clicked;
             }
-            else sphere_clicked = false;
+            else sphere_clicked = "";
         }
         if (Input.GetMouseButton(0))
         {
-            float delta_speed = 10f;
+            
+            Vector2 current = Input.mousePosition;
+
+            sphere_speed = (current - old_pos).magnitude / 10f;
+
+            old_pos = current;
+
 
         }
         if (Input.GetMouseButtonUp(0))
         {
             for (int i = 0; i < 3; i++)
             {
-                this.transform.GetChild(i).localScale = new Vector3(1, 1, 1);
+                if (this.transform.GetChild(i).gameObject.name != sphere_clicked)
+                {
+                    this.transform.GetChild(i).localScale = new Vector3(1, 1, 1);
+                }
             }
-            sphere_clicked = false;
         }
     }
 }  
