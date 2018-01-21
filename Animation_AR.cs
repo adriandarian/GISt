@@ -34,10 +34,17 @@ public class Animation_AR : MonoBehaviour {
                     sphere_clicked = hit.collider.gameObject.name;
                     GameObject.Find("Canvas").GetComponent<UI_Base>().screen = sphere_clicked;
                     GameObject.Find("Canvas").GetComponent<UI_Base>().berry = hit.collider.gameObject.transform.parent.parent.name ;
-
+                    hit.collider.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
                 }
             }
             else sphere_clicked = "";
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                this.transform.GetChild(i).localScale = new Vector3(.5f, .5f, .5f);
+            }
         }
     }
 }  

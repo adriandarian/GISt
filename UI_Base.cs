@@ -9,6 +9,7 @@ public class UI_Base : MonoBehaviour {
 
     public GameObject FarmViewScreenRasp;
     public GameObject FarmViewScreenBlack;
+    public GameObject FarmViewBlack;
     public GameObject FarmViewScreenStraw;
 
     public GameObject RecipeScreenRasp;
@@ -42,13 +43,13 @@ public class UI_Base : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        print(screen);
         switch (berry)
         {
             case "ImageTargetBlack":
                 switch (screen)
                 {
                     case "Farm Viewer":
+                        FarmViewBlack.SetActive(true);
                         FarmViewScreenBlack.SetActive(true);
                         FarmViewScreenBlack.GetComponent<RectTransform>().localPosition = new Vector3(0, FarmViewScreenBlack.GetComponent<RectTransform>().localPosition.y * .7f, 0);
                         FarmViewScreenBlack.GetComponent<Image>().color = new Color(1, 1, 1, FarmViewScreenBlack.GetComponent<Image>().color.a + Time.deltaTime * 2.5f);
@@ -75,6 +76,7 @@ public class UI_Base : MonoBehaviour {
                         }
                         break;
                     case "":
+                        FarmViewBlack.SetActive(false);
                         FarmViewScreenBlack.GetComponent<Image>().color = new Color(1, 1, 1, FarmViewScreenBlack.GetComponent<Image>().color.a - Time.deltaTime * 2.5f);
                         if (FarmViewScreenBlack.GetComponent<Image>().color.a < 0)
                         {
