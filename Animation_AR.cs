@@ -45,25 +45,18 @@ public class Animation_AR : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+                if (sphere_clicked == "")
+                {
+                    // the object identified by hit.transform was clicked
+                    // do whatever you want
+                    sphere_clicked = hit.collider.gameObject.name;
+                    GameObject.Find("Canvas").GetComponent<UI_Base>().screen = sphere_clicked;
 
-                // the object identified by hit.transform was clicked
-                // do whatever you want
-                sphere_clicked = hit.collider.gameObject.name;
-                GameObject.Find("Canvas").GetComponent<UI_Base>().screen = sphere_clicked;
+                }
             }
             else sphere_clicked = "";
         }
-        if (Input.GetMouseButton(0))
-        {
-            
-            Vector2 current = Input.mousePosition;
 
-            sphere_speed = (current - old_pos).magnitude / 10f;
-
-            old_pos = current;
-
-
-        }
         if (Input.GetMouseButtonUp(0))
         {
             for (int i = 0; i < 3; i++)
