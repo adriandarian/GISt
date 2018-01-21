@@ -22,7 +22,7 @@ public class Animation_AR : MonoBehaviour {
         if (sphere_clicked != "")
         {
 
-            GameObject.Find(sphere_clicked).gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            //GameObject.Find(sphere_clicked).gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             GameObject.Find(sphere_clicked).gameObject.transform.localScale = new Vector3(GameObject.Find(sphere_clicked).gameObject.transform.localScale.x + .25f, GameObject.Find(sphere_clicked).gameObject.transform.localScale.y + .25f, GameObject.Find(sphere_clicked).gameObject.transform.localScale.y + .25f);
 
         }
@@ -30,7 +30,13 @@ public class Animation_AR : MonoBehaviour {
         if (sphere_clicked == "")
         {
             this.transform.Rotate(new Vector3(0, sphere_speed + .5f, 0));
-            this.transform.position = new Vector3(0, Mathf.Sin(Time.time * 2f) / 8f, 0);
+            for (int i = 0; i < 3; i++)
+            {
+                //this.transform.GetChild(i).rotation = Quaternion.Euler( new Vector3(0, 0, 0));//Rotate(new Vector3(Random.value, Random.value, Random.value));
+                
+            }
+
+            this.transform.position = new Vector3(0, Mathf.Sin(Time.time * 2f) / 4f, 0);
         }
 
         if (Input.GetMouseButtonDown(0))
