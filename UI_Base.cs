@@ -6,20 +6,26 @@ using UnityEngine.UI;
 public class UI_Base : MonoBehaviour {
 
     public GameObject SplashScreen;
-    
+
 
     public GameObject FarmViewScreen;
-    public GameObject NutritionScreen;
+    public GameObject RecipeScreen;
     public GameObject InfoScreen;
 
     public string screen;
-    
+
     float timer = 0;
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
-		
-	}
+
+    }
+
+    public void Back()
+    {
+        GameObject.Find("ARProjection").GetComponent<Animation_AR>().sphere_clicked = "";
+        screen = "";
+    }
 
     // Update is called once per frame
     void Update()
@@ -28,6 +34,8 @@ public class UI_Base : MonoBehaviour {
         switch (screen)
         {
             case "Farm Viewer":
+
+                FarmViewScreen.GetComponent<RectTransform>().localPosition = new Vector3(0, FarmViewScreen.GetComponent<RectTransform>().localPosition.y / 10f, 0);
                 FarmViewScreen.GetComponent<Image>().color = new Color(1, 1, 1, FarmViewScreen.GetComponent<Image>().color.a + Time.deltaTime);
                 if (FarmViewScreen.GetComponent<Image>().color.a > 1)
                 {
@@ -35,11 +43,41 @@ public class UI_Base : MonoBehaviour {
                 }
                 break;
             case "Info":
-
+                InfoScreen.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+                InfoScreen.GetComponent<Image>().color = new Color(1, 1, 1, InfoScreen.GetComponent<Image>().color.a + Time.deltaTime);
+                if (InfoScreen.GetComponent<Image>().color.a > 1)
+                {
+                    InfoScreen.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                }
+                print(InfoScreen.GetComponent<Image>().color.a);
+                break;
+            case "Recipes":
+                RecipeScreen.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+                RecipeScreen.GetComponent<Image>().color = new Color(1, 1, 1, RecipeScreen.GetComponent<Image>().color.a + Time.deltaTime);
+                if (RecipeScreen.GetComponent<Image>().color.a > 1)
+                {
+                    RecipeScreen.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                }
                 break;
             case "":
+                FarmViewScreen.GetComponent<RectTransform>().localPosition = new Vector3(0, -1920, 0);
                 FarmViewScreen.GetComponent<Image>().color = new Color(1, 1, 1, FarmViewScreen.GetComponent<Image>().color.a - Time.deltaTime);
-
+                if (FarmViewScreen.GetComponent<Image>().color.a < 0)
+                {
+                    FarmViewScreen.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                }
+                RecipeScreen.GetComponent<RectTransform>().localPosition = new Vector3(0, -1920, 0);
+                RecipeScreen.GetComponent<Image>().color = new Color(1, 1, 1, RecipeScreen.GetComponent<Image>().color.a - Time.deltaTime);
+                if (RecipeScreen.GetComponent<Image>().color.a < 0)
+                {
+                    RecipeScreen.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                }
+                InfoScreen.GetComponent<RectTransform>().localPosition = new Vector3(0, -1920, 0);
+                InfoScreen.GetComponent<Image>().color = new Color(1, 1, 1, InfoScreen.GetComponent<Image>().color.a - Time.deltaTime);
+                if (InfoScreen.GetComponent<Image>().color.a < 0)
+                {
+                    InfoScreen.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                }
                 break;
 
 
@@ -53,34 +91,7 @@ public class UI_Base : MonoBehaviour {
             SplashScreen.GetComponent<Image>().color = new Color(1, 1, 1, SplashScreen.GetComponent<Image>().color.a - Time.deltaTime);
         }
 
-
-
-        if (Input.touchCount == 2)
-        {
-            // Store both touches.
-            Touch touchZero = Input.GetTouch(0);
-            Touch touchOne = Input.GetTouch(1);
-
-            // Find the position in the previous frame of each touch.
-            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-            // Find the magnitude of the vector (the distance) between the touches in each frame.
-            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
-
-            // Find the difference in the distances between each frame.
-            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
-            print(deltaMagnitudeDiff);
-
-            if (deltaMagnitudeDiff > 100f)
-            {
-                GameObject.Find("ARProjection").GetComponent<Animation_AR>().sphere_clicked = "";
-                screen = "";
-            }
-
-        }
-
+        
     }
 
 }

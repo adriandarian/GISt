@@ -23,7 +23,7 @@ public class Animation_AR : MonoBehaviour {
         {
 
             //GameObject.Find(sphere_clicked).gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-            GameObject.Find(sphere_clicked).gameObject.transform.localScale = new Vector3(GameObject.Find(sphere_clicked).gameObject.transform.localScale.x + .25f, GameObject.Find(sphere_clicked).gameObject.transform.localScale.y + .25f, GameObject.Find(sphere_clicked).gameObject.transform.localScale.y + .25f);
+           // GameObject.Find(sphere_clicked).gameObject.transform.localScale = new Vector3(GameObject.Find(sphere_clicked).gameObject.transform.localScale.x + .25f, GameObject.Find(sphere_clicked).gameObject.transform.localScale.y + .25f, GameObject.Find(sphere_clicked).gameObject.transform.localScale.y + .25f);
 
         }
 
@@ -70,7 +70,7 @@ public class Animation_AR : MonoBehaviour {
             {
                 if (this.transform.GetChild(i).gameObject.name != sphere_clicked)
                 {
-                    this.transform.GetChild(i).localScale = new Vector3(1, 1, 1);
+                   // this.transform.GetChild(i).localScale = new Vector3(1, 1, 1);
                 }
             }
         }
